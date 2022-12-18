@@ -16,7 +16,6 @@ list.append(item1, item2, item3);
 $("body").append(list);
 
 // result
-
 <ul id="my-list">
   <li>Item 1</li>
   <li>Item 2</li>
