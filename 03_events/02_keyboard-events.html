@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Events</title>
+    <style>
+        #txtName
+        {
+           font-size: 30px; 
+        }
+    </style>
+    <!-- Add reference to latest jQuery file -->
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+    <script type="text/javascript">
+       $(document).ready(function(){
+            {
+                $("#txtName").keydown(function() {
+                    $(this).css("color", "red");
+                });
+                $("#txtName").keyup(function() {
+                    $(this).css("color", "blue");
+                });
+            }
+          
+        });      
+    </script>
+</head>
+
+<body>
+<div></div>
+<input type="text" id="txtName" />
+</body>
+</html>
+
+
+

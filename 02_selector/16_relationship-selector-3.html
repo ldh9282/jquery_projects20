@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Selectors</title>
+    <style>
+        .style{
+            border:2px solid black;
+            width:35%;
+            height:100px;
+            padding:10px;
+            margin:10px;
+        }
+        p{
+            border:1px solid red;
+            background-color:pink;
+            width:80px;
+            height:80px;
+            float:left;
+            padding:5px;
+            margin:5px;
+        }
+        span{
+            border:1px solid blue;
+            background-color:lightblue;
+            width:40px;
+            height:40px;
+            float:left;
+            padding:5px;
+            margin:5px;
+        }
+        #first{
+            border:1px solid gray;
+            background-color:silver;
+            width:60px;
+            height:60px;
+            float:left;
+            padding:5px;
+            margin:5px;
+        }
+    </style>
+    <!-- Add reference to latest jQuery file -->
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $("#btnClick").click(function(){
+               $("p:first-of-type").hide(2000);
+               //$("p:last-of-type").hide(2000);
+               //$("p:nth-of-type(1)").hide(2000);
+               //$("p:nth-last-of-type(1)").hide(2000);
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <div id="main" class="style">
+        <p>Paragraph</p>
+        <span>Span</span>            
+        <p>Paragraph</p>
+    </div>    
+   <div id="sub" class="style">
+        <span>Span</span>
+        <div id="first">Div</div>
+        <p>Paragraph</p>        
+        <div>
+          <span>Span</span>  
+        </div>        
+   </div> <br />    
+    <button id="btnClick">Click!!!</button>
+</body>
+</html>
+
+
+

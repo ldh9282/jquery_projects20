@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Events</title>
+    <style>
+        div{
+            color: blue;
+            font-size: 20px;
+        }
+    </style>
+    <!-- Add reference to latest jQuery file -->
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+    <script type="text/javascript">
+       $(document).ready(function(){
+            /* 
+            $("select").change(function() {
+                $("#result").text($(this).val()).show();
+            }); */
+
+            /* 
+            $("select").change(function() {
+                $("#result").text($(this).val()).show().fadeOut(3000);
+            });  */
+
+            
+            /* 
+            $(":text").change(function() {
+                $("#result").text($(this).val()).show().fadeOut(3000);
+            }); */ 
+
+            /* 
+            $(":text").select(function(){
+                $("#result").text($(this).val()).show().fadeOut(3000);
+            }); */
+
+            /* 
+            $("form").submit(function() {
+                alert($("#salutation").val() + ". " + $("[name=FirstName]").val() + " " + $("[name=LastName]").val() );
+            }); */
+            
+            /* 
+            $("form").submit(); */
+        });      
+    </script>
+</head>
+<body>
+<form>
+    <fieldset style="width:400px">
+      <legend><b>Personal</b></legend>
+      Salutation:
+      <select id="salutation">
+        <option value="Mr">Mr.</option>      
+        <option value="Miss">Miss.</option>
+        <option value="Ms">Ms.</option>
+        <option value="Mrs">Mrs.</option>
+      </select><br />
+      First Name: <input type="text" name="FirstName"/><br />
+      Last Name: <input type="text" name="LastName"/><br />
+      <input type="submit" id="btnSubmit" value="Submit"/><br />
+      <div id="result"></div>
+    </fieldset>
+</form>
+</body>
+</html>

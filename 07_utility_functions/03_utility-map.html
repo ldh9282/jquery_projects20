@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Utility Function: $.map()</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <script>
+        $(document).ready(function(){
+            // Translate all items in an array or object to new array of items.
+            // $.map(arr, function(item, index) => new_item)
+            var myArr = [1,2,3,4,5,6];
+            var newArr = $.map(myArr, function(item, index){
+                return Math.pow(item, 2) + index;
+            });
+
+            /* var myArr = ["abel", "sarah", "aaron", "rose", "john"];
+            var newArr = $.map(myArr, function(item, index){
+                return item.toUpperCase();
+            }) */
+
+            $("#result").html("Current Array: " + myArr +"<br> New Array: " + newArr);
+        });
+    </script>
+</head>
+<body>
+    <div id="result"></div>
+</body>
+</html>

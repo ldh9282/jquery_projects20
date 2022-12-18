@@ -1,0 +1,88 @@
+<html>
+<head>
+    <title>DOM Traversal</title>
+    <style>
+        .cell {
+            height: 50px;
+            width: 100px;
+            text-align: center;
+            border:2px dotted gray;
+        }
+        .row
+        {
+            outline:green solid medium;
+        }
+        table
+        {
+            border:3px solid blue;
+        }
+        *
+        {
+            margin:10px;
+            padding:10px;
+        }
+   </style>
+    <!-- Add reference to latest jQuery file -->
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function(){
+        $("#btnClick").click(function(){
+            // 스페이스는 descendant selector로 작용
+            // descendant means any child elements 
+
+
+            //$("#row1 td").first().css("outline", "red solid thick");
+            //$("#row1 td").last().css("outline", "red solid thick");
+            //$("#row1 td").eq(1).css("outline", "red solid thick");
+
+            // 2개 동일한 결과
+            //$("#row1 td").filter(":even").css("outline", "red solid thick");
+            //$("#row1 td:even").css("outline", "red solid thick");
+
+            // 2개 동일한 결과
+            //$("#row1 td").not(":even").css("outline", "red solid thick");
+            //$("#row1 td:not(:even)").css("outline", "red solid thick");
+
+            // end value (optional)
+            //$("#row1 td").slice(1).css("outline", "red solid thick");
+
+            //$("#row1 td").slice(1, 3).css("outline", "red solid thick");
+            //$("td").slice(5, 10).css("outline", "red solid thick");
+            //$("td").slice(11).css("outline", "red solid thick");
+
+            // td element을 가지는 tr이 selected
+            //$("tr").has("td").css("outline", "red solid thick");                
+        });    
+     });
+    </script>
+</head>
+<body>
+    <table id="mytable">
+        <tr id="row1" class="row">
+            <td id="r1c1" class="cell">Row1 Cell1</td>
+            <td id="r1c2" class="cell">Row1 Cell2</td>
+            <td id="r1c3" class="cell">Row1 Cell3</td>
+            <td id="r1c4" class="cell">Row1 Cell4</td>
+        </tr>
+        <tr id="row2" class="row">
+            <td id="r2c1" class="cell">Row2 Cell1</td>
+            <td id="r2c2" class="cell">Row2 Cell2</td>
+            <td id="r2c3" class="cell">Row2 Cell3</td>
+            <td id="r2c4" class="cell">Row2 Cell4</td>
+        </tr>
+        <tr id="row3" class="row">
+            <td id="r3c1" class="cell">Row3 Cell1</td>
+            <td id="r3c2" class="cell">Row3 Cell2</td>
+            <td id="r3c3" class="cell">Row3 Cell3</td>
+            <td id="r3c4" class="cell">Row3 Cell4</td>
+        </tr>
+        <tr id="row4" class="row">
+            <td id="r4c1" class="cell">Row4 Cell1</td>
+            <td id="r4c2" class="cell">Row4 Cell2</td>
+            <td id="r4c3" class="cell">Row4 Cell3</td>
+            <td id="r4c4" class="cell">Row4 Cell4</td>
+        </tr>
+    </table><br />
+    <button id="btnClick">Click!!!</button>
+</body>
+</html>

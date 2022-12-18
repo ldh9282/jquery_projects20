@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DOM Manipulation</title>
+    <!-- Add reference to latest jQuery file -->
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+    <style>
+        .parent
+        {
+            border:3px solid black;
+            width:150px;
+            height:100px;
+        }
+    </style>
+    <script type="text/javascript">
+       $(document).ready(function(){
+            $("#btnClick").click(function(){
+                // remove()는 현재 element와 자식 element를 remove하지만
+                // empty는 오직 child element만 remove함
+                // $(".parent").remove();
+                // $(".parent").empty();
+                
+                // $("div").remove(".child");
+                // $(" .child").remove();
+            });
+        });      
+    </script>
+</head>
+
+<body>
+<div class="parent">
+    <div>First Item</div>
+    <div class="child">Second Item</div>
+    <div>Third Item</div>
+    <div>Fourth Item</div>
+</div><br />
+<input type="button" id="btnClick" value="Click" /><br />
+</body>
+</html>
+
+
+

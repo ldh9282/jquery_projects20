@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DOM Manipulation</title>
+    <!-- Add reference to latest jQuery file -->
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+    <style>
+        .parent
+        {
+            border:3px solid black;
+            width:150px;
+            height:100px;
+        }
+    </style>
+    <script type="text/javascript">
+       $(document).ready(function(){
+            $("#btnClick").click(function(){
+                // 텍스트를 end에 append
+                // $("p").append(" Good Morning!!!");
+                // 자식 element end에 append
+                // $(".parent").append("<div>Fourth Item</div>");
+                // sibling element 로 after
+                // $("p").after(" Good Morning!!!");
+                // sibling element 로 after
+                // $(".parent").after("<div>Fourth Item</div>");
+                // 텍스트를 begining에 prepend
+                // $("p").prepend(" Good Morning!!!");
+                // 자식 element begining에 append
+                // $(".parent").prepend("<div>Fourth Item</div>");
+                // sibling element 로 before
+                // $("p").before(" Good Morning!!!");
+                // sibling element 로 before
+                // $(".parent").before("<div>Fourth Item</div>");
+            });
+        });      
+    </script>
+</head>
+
+<body>
+<p>John Smith</p>
+<div class="parent">
+    <div>First Item</div>
+    <div>Second Item</div>
+    <div>Third Item</div>
+</div><br />
+<input type="button" id="btnClick" value="Click" /><br />
+</body>
+</html>
+
+
+

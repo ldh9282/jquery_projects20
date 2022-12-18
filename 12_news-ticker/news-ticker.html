@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .ticker {
+            background: pink;
+            border: 1px solid;
+            height: 90px;
+            overflow: hidden;
+            
+        }
+        #news li {
+            text-decoration-line: underline;
+        }
+        #news li:hover {
+            background-color: palegreen;
+            display: inline;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+    <script>
+        // A ticker is a piece of software or hardware that displays a scrolling or continuously updating list of information on a screen or display. Tickers are commonly used in stock markets, newsrooms, and other situations where it is important to display real-time or constantly changing data.
+
+        // Create a variable to store the setInterval timer
+        var interval; 
+        function ticker() {
+            // slideUp(callback): slideUp 완료 후 callback 함수실행
+            $("#news li:first").slideUp("slow", function() {
+                // $("#news")의 마지막 child로 붙임. 그리고 slidedown
+                $(this).appendTo($("#news")).slideDown();
+            });
+        }
+        
+        function stopTicker() {
+            // clearInterval: stop a repeating setInterval() timer that was previously started. 
+            clearInterval(interval);
+        }
+
+        function startTicker() {
+            interval = setInterval(ticker, 3000);
+        }
+        $(document).ready(function(){
+            startTicker();
+            $("#news").hover(stopTicker, startTicker);
+        });
+    </script>
+</head>
+<body>
+    <div class="ticker">
+
+        <ul id="news">
+            <li>The <b>first</b> piece of news The <b>first</b> piece of news </li>
+            <li>The <b>second</b> piece of news The <b>second</b> piece of news </li>
+            <li>The <b>third</b> piece of news The <b>third</b> piece of news </li>
+            <li>The <b>forth</b> piece of news The <b>forth</b> piece of news </li>
+            <li>The <b>fifth</b> piece of news The <b>fifth</b> piece of news </li>
+        </ul>
+    </div>
+</body>
+</html>

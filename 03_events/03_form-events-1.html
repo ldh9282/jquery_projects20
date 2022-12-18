@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Events</title>
+    <!-- Add reference to latest jQuery file -->
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+    <script type="text/javascript">
+       $(document).ready(function(){
+            /* 
+            {
+                $(":text").focus(function() {
+                    $(this).css("background-color", "gray");
+                });
+                $(":text").blur(function() {
+                    $(this).css("background-color", "white");
+                });
+            } */
+            
+            
+            $("fieldset").focusin(function(){
+                $(this).css("background-color", "gray");
+            });
+            $("fieldset").focusout(function(){
+                $(this).css("background-color", "white");
+            });
+        });      
+    </script>
+</head>
+
+<body>
+<fieldset style="width:200px;">
+    <legend><b>Personal</b></legend>
+    <input type="text" id="firstName" placeholder="First Name" /><br />
+    <input type="text" id="lastName" placeholder="Last Name" /><br />
+    <input type="submit" id="btnSubmit" value="Submit" />
+</fieldset>
+</body>
+</html>
+
+
+

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>jQuery Referencing</title>
+    <!-- Add reference to latest jQuery file -->
+    <!-- jquery cdn -->
+    <script
+  src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $("#btnClick").on("click", function() {
+                $("#myPara").css("background-color", "pink");
+            });
+            
+        });
+        /* 
+        $(document).ready(function(){
+            $("#btnClick").click(function(){
+                $("#myPara").css("background-color", "pink");
+            });    
+        }); */
+    </script>
+</head>
+<body>
+<p id="myPara">First jQuery</p>
+<button id="btnClick">Click Me!!!</button>
+</body>
+</html>

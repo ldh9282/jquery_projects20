@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Memory Game</title>
+    <style>
+        body {
+            background-color: gray;
+        }
+
+        #container {
+            margin: 0px auto;
+            width: 640px;
+            font: 20px Verdana;
+        }
+
+        #information {
+            text-align: center;
+            margin: 20px;
+        }
+
+        .text {
+            color: white;
+        }
+
+        .button {
+            background: black;
+            color: white;
+            margin: 10px;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #images div {
+            float: left;
+            width: 100px;
+            height: 100px;
+            margin: 5px;
+            padding: 5px;
+            border: 4px solid black;
+            cursor: pointer;
+            background-color: white;
+        }
+
+        #images div img {
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+    <script>
+        var firstOpenCard = "";
+        var idOfFirstOpenCard = "";
+        var found = 0;
+        var tries = 0;
+        var imageArray = [
+            "1.jpg",
+            "2.jpg",
+            "3.jpg",
+            "4.jpg",
+            "5.jpg",
+            "6.jpg",
+            "7.jpg",
+            "8.jpg",
+            "9.jpg",
+            "10.jpg"
+        ];
+
+
+        function placeImagesBeforeShuffle() {
+            for (var i = 1; i < 3; i++) {
+                $.each(imageArray, function (index, image) {
+                    $("#images").append("<div id=card" + i + index + "><img hidden src=" + image + " /></div>");
+                });
+            }
+        }
+        function shuffleImages() {
+            var totalImageCard = imageArray.length * 2;
+            var cardsToBeShuffled = $.merge([], imageArray, imageArray);
+            var currentlyLaidCard = $("#images div:first-child");
+
+            for (var z = 0; z < totalImageCard; z++) {
+                var random = Math.floor(Math.random() * (cardsToBeShuffled.length));
+                $("#" + currentlyLaidCard.attr("id") + " img").attr("src", cardsToBeShuffled[random]);
+                cardsToBeShuffled.splice(random, 1);
+                currentlyLaidCard = currentlyLaidCard.next();
+            }
+        }
+        function openCard() {
+            var idOfCardToOpen = $(this).attr("id");
+            if ($("#" + idOfCardToOpen + " img").is(":hidden")) {
+                $("#" + idOfCardToOpen + " img").show("slow");
+                if (firstOpenCard == "") {
+
+                    idOfFirstOpenCard = idOfCardToOpen;
+                    firstOpenCard = $("#" + idOfCardToOpen + " img").attr("src");
+                } else {
+                    secondOpenCard = $("#" + idOfCardToOpen + " img").attr("src");
+
+                    if (firstOpenCard != secondOpenCard) {
+                        $("#" + idOfFirstOpenCard + " img").hide("slow");
+                        $("#" + idOfCardToOpen + " img").hide("slow");
+
+                        idOfFirstOpenCard = "";
+                        firstOpenCard = "";
+                    } else {
+                        idOfFirstOpenCard = "";
+                        firstOpenCard = "";
+                        found++;
+                        console.log(found)
+                    }
+                    tries++;
+                    console.log(tries);
+                    $("#tries").html(tries);
+                    if (found == imageArray.length) {
+                        console.log(found);
+                        alert("YES !! You completed the game with " + tries + "tries");
+                    }
+                }
+            }
+        }
+
+        
+        
+        function resetGame() {
+            shuffleImages();
+            tries = 0;
+            $("#tries").html(tries);
+            found = 0;
+            firstOpenCard = 0;
+            idOfFirstOpenCard = "";
+            $("#images div img").hide();
+        }
+        $(document).ready(function () {
+            placeImagesBeforeShuffle();
+            shuffleImages();
+
+            $("#images div").on("click", openCard);
+            $(".button").on("click", resetGame);
+        });
+
+    </script>
+</head>
+
+<body>
+    <div id="container">
+        <div id="information">
+            <span class="text">Tries: </span>
+            <span id="tries">0</span>
+            <a class="button">Reset</a>
+        </div>
+        <div id="images">
+
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,36 @@
+<html>
+<head>
+    <title>.on and .one method()</title>
+    <style>
+        .box{
+            width: 100px;
+            height: 100px;
+            border: 2px solid black;
+            background: pink;
+            margin: 10px;
+            float: left;
+        }
+    </style>
+    <!-- Add reference to latest jQuery file -->
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            
+            $(".box").on("click", function() {
+                $(this).css("height", parseInt($(this).css("height"))+50+"px");
+            });
+            /* 
+            $(".box").one("click", function() {
+                $(this).css("height", parseInt($(this).css("height"))+50+"px");
+            }); */
+        });
+    </script>
+</head>
+<body>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+</body>
+</html>

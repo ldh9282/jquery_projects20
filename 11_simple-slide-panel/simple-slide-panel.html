@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Slide Panel</title>
+    <style>
+        body {
+            width: 500px;
+            margin: auto;
+        }
+
+        #content {
+            background: pink;
+            height: 200px;
+            display: none;
+        }
+
+        #panel {
+            margin: auto;
+            border-top: 2px solid black;
+            
+        }
+
+        .message {
+            background: rgba(255, 192, 203, 0.5);
+            text-align: center;
+            cursor: pointer;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("p").on("click", function(){
+                $("#content").slideToggle("middle");
+            });
+        });
+    </script>
+</head>
+<body>
+    <div id="content">
+        This is a panel This is a panel This is a panel This is a panel This is a panel This is a panel This is a panel This is a panel This is a panel This is a panel This is a panel This is a panel This is a panel This is a panel This is a panel This is a panel
+
+    </div>
+
+    <p id="panel"><span class="message">Slide Panel</span></p>
+</body>
+</html>

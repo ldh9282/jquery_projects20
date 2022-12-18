@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Selectors</title>
+    <style>
+        div{
+            width:100px;
+            height:100px;
+            background-color:pink;
+            margin:5px;
+            padding:5px;
+        }
+    </style>
+    <!-- Add reference to latest jQuery file -->
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+    <script type="text/javascript">
+       $(document).ready(function(){
+            function animating()
+            {
+                $("#box").slideToggle(5000);
+            }
+            animating();
+            $("#btnClick").click(function(){
+                $("div:animated").css("background-color", "purple");   
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <div></div>
+    <div id="box"></div>
+    <div></div>
+    <button id="btnClick">Submit</button>
+</body>
+</html>
+
+
+

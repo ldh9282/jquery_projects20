@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Move an Existing Element</title>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+    <style>
+        .parent{
+            border: 3px solid black;
+            width: 525px;
+            height: 135px;
+            margin: 20px;
+        }
+        #second{
+            background-color: pink;
+        }
+        .child{
+            width: 100px;
+            height: 100px;
+            margin: 15px;
+            float: left;
+            background-color: yellow;
+        }
+        #child1{
+            background-color: red;
+        }
+        #child2{
+            background-color: green;
+        }
+        #child3{
+            background-color: blue;
+        }
+        #child4{
+            background-color: purple;
+        }
+    </style>
+    <script>
+        // append는 이미 존재하는 element를 현재위치에서 remove하고 새로운 위치로 move하는 용도로 사용할 수도 있음
+        $(document).ready(function(){
+            $("#btnClick").click(function(){
+                 $("#second").append($("#first div:first"));
+            });
+        });
+    </script>
+</head>
+<body>
+    <div id="first" class="parent">
+        <div id="child1" class="child"></div>
+        <div id="child2" class="child"></div>
+        <div id="child3" class="child"></div>
+        <div id="child4" class="child"></div>
+    </div>
+    <div id="second" class="parent"></div>
+    <button id="btnClick">Click</button>
+</body>
+</html>

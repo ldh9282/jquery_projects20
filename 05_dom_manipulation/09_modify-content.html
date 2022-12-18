@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DOM Manipulation</title>
+    <!-- Add reference to latest jQuery file -->
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+    <style>
+        .parent
+        {
+            border:3px solid black;
+            width:150px;
+            height:100px;
+        }
+    </style>
+    <script type="text/javascript">
+       $(document).ready(function(){
+            $("#btnClick").click(function(){
+                 $("#child1").replaceWith("Another Item");
+                 $("<b>New Item</b>").replaceAll("#child2");
+            });
+        });      
+    </script>
+</head>
+
+<body>
+<div class="parent">
+    <div>First Item</div>
+    <div id="child1">Second Item</div>
+    <div>Third Item</div>
+    <div id="child2">Fourth Item</div>
+</div><br />
+<input type="button" id="btnClick" value="Click" /><br />
+</body>
+</html>
+
+
+

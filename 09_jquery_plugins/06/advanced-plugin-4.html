@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<head>
+<title>Sample Code</title>
+<!-- Add reference to latest jQuery file -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="jquery.myplugin-4.js"></script>
+<script src="jquery.styling-4.js"></script>
+<script>
+	$(document).ready(function() {
+		/*$("body *").click(function(){
+			//alert("The ID is " + $(this).getID());
+			$(this).getElement(); 
+		});*/
+		 $("button").click(function(){
+			$("h2").colorText();
+			//$(".same").getElement();
+			//$("h2").text("New Heading").css({"fontSize":"50px"})
+			$("h3").colorText({color:"blue", background:"pink"});
+			$("p").colorText({color:"green"});
+			$(this).colorText({background:"black"});
+		}); 
+	});
+</script>
+</head>
+<body>
+	<h2 id="mainHead" class="same">Main Heading</h2>
+	<p id="first">This is a paragraph.</p>
+	<h3 id="subHead">Sub Heading</h3>
+	<p id="last" class="same">This is another paragraph!!!</p>
+	<button id="btnClick">Click</button>
+</body>
+</html>

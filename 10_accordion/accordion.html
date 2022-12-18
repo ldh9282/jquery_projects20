@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Accordion</title>
+    <style>
+        #accordion {
+            width: 400px;
+            margin: auto;
+        }
+        #accordion h4 {
+            background: pink;
+            border: 1px solid black;
+            cursor: pointer;
+            margin: 0;
+            padding: 5px;
+        }
+        #accordion h4:hover {
+            background: rgba(255, 192, 203, 0.5);
+        }
+        #accordion p {
+            background: rgb(255, 255, 255);
+            border: 0.3px solid black;
+            cursor: poisnter;
+            margin: 0;
+            padding: 5px;
+        }
+    
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#accordion p:not(:first)").hide();
+            $("#accordion h4").on("click", function() {
+                // next(): next sibling element
+                $(this).next().slideToggle("fast")
+                              .siblings("p:visible")
+                              .hide();
+            });
+        });
+    </script>
+</head>
+<body>
+    <!--In programming, an accordion is a graphical user interface element that allows a user to expand or collapse a section of content on a webpage or application. -->
+    <div id="accordion">
+
+        <h4>First Section</h4>
+        <p>This is First paragraph This is First paragraph This is First paragraph</p>
+        <h4>Second Section</h4>
+        <p>This is Second paragraph This is Second paragraph This is Second paragraph</p>
+        <h4>Third Section</h4>
+        <p>This is Third paragraph This is Third paragraph This is Third paragraph</p>
+        <h4>Forth Section</h4>
+        <p>This is Forth paragraph This is Forth paragraph This is Forth paragraph</p>
+        <h4>Fifth Section</h4>
+        <p>This is Fifth paragraph This is Fifth paragraph This is Fifth paragraph</p>
+    </div>
+</body>
+</html>

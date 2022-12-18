@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>animate: Dynamic property name</title>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+    <style>
+        #parent{
+            width: 500px;
+            height: 500px;
+            border: 5px solid black;
+            margin: 20px auto;
+            position: relative;
+        }
+
+        .box{
+            width: 150px;
+            height: 150px;
+            text-align: center;
+            font-size: 25px;
+            line-height: 150px;
+            position: absolute;
+            cursor: pointer;
+        }
+
+        #box1{
+            background-color: pink;
+            top: 100px;
+            left: 100px;
+        }
+        #box2{
+            background-color: cyan;
+            top: 100px;
+            right: 100px;
+        }
+        #box3{
+            background-color: gray;
+            bottom: 100px;
+            left: 100px;
+        }
+        #box4{
+            background-color: red;
+            bottom: 100px;
+            right: 100px;
+        }
+    </style>
+    <script>
+        $(document).ready(function() {
+            /* $("#box1").click(function() {
+                $(this).animate({"top": 0, "left": 0})
+            });
+            $("#box2").click(function() {
+                $(this).animate({"top": 0, "right": 0})
+            });
+            $("#box3").click(function() {
+                $(this).animate({"bottom": 0, "left": 0})
+            });
+            $("#box4").click(function() {
+                $(this).animate({"bottom": 0, "right": 0})
+            }); */
+
+            $(".box").click(function(){
+                // using data- attributes
+                var topBottom = $(this).data("topbottom");
+                var leftRight = $(this).data("leftright");
+
+                // first way: dynamic property name 
+                var animationProp = {};
+                animationProp[topBottom] = 0;
+                animationProp[leftRight] = 0
+                $(this).animate(animationProp);
+                
+                // second way: dynamic property name 
+                //$(this).animate({[topBottom]:0, [leftRight]:0});
+            });
+        });
+
+    </script>
+</head>
+<body>
+    <div id="parent">
+        <div id="box1" class="box" data-topbottom="top" data-leftright="left">Click</div>
+        <div id="box2" class="box" data-topbottom="top" data-leftright="right">Click</div>
+        <div id="box3" class="box" data-topbottom="bottom" data-leftright="left">Click</div>
+        <div id="box4" class="box" data-topbottom="bottom" data-leftright="right">Click</div>
+    </div>
+</body>
+</html>

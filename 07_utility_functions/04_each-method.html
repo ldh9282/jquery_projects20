@@ -1,0 +1,64 @@
+<!DOCTYPE>
+<html>
+
+<head>
+	<title>$.each() Method</title>
+	<!-- Add reference to latest jQuery file -->
+	<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function ()
+		{
+			// $.each(collection, function(index, value) => any)
+
+			// Array
+			/* 
+			var nameArr = ["Aaron", "Ann", "Aidan", "Sarah", "Abel"];
+			$.each(nameArr, function(index, value) {
+				$("#result1").append(index + " : " + value + "<br>");
+			}); */
+
+			// object
+			/* 
+			var numberObj = {a: 1, b: 10, c: 100, d: 1000};
+			var sum = 0
+			$.each(numberObj, function(index, value) {
+				sum += value;
+				$("#result2").append(index + " : " + sum + "<br>");
+			}); */
+
+			// arr나 object 뿐만 아니라 selector도 가능
+			// ul li selector: ul의 descendants인 li elements가 selected
+
+			// 그러나 selector를 사용할 경우 단순히 value 사용해서는 text를 얻을 수 없음
+			/* 
+			$("ul li").each(function(index, value) {
+				$("#result3").append(index + " : " + value + "<br>");
+			}); */
+			/* 
+			$("ul li").each(function(index, value) {
+				$("#result3").append(index + " : " + $(this).text() + "<br>");
+			}) */
+			/* 
+			$("div").each(function(index, value) {
+				$("#result3").append(index + " : " + $(this).attr("id") + "<br>");
+			}); */
+		});
+	</script>
+</head>
+
+<body>
+
+	<div id="result1"></div>
+	<br><br>
+	<div id="result2"></div>
+
+	<ul>
+		<li>Jasmin</li>
+		<li>Rose</li>
+		<li>Lotus</li>
+		<li>Tulips</li>
+	</ul>
+	<div id="result3"></div>
+</body>
+
+</html>

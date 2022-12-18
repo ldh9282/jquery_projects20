@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Selectors</title>
+    <!-- Add reference to latest jQuery file -->
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function(){       
+        $("#btnClick").click(function(){            
+            // $("[id |= first]").css("color", "red");
+            $("[id ~= first]").css("color", "red");
+        });         
+     });
+    </script>
+</head>
+<body>
+<table>
+    <p id="first-para" class="paras">First Paragraph. First Paragraph.</p>
+    <p id="second-para">Second Paragraph. Second Paragraph.</p>
+    <p id="third-para">Third Paragraph. Third Paragraph.</p>
+    <div id="first">First div</div>    
+    <div id="divSecond" class="divs">Second div</div>
+    <div id="divFourth">Fourth div</div>
+    <div id="divFifth" class="divs">Fifth div</div><br />
+    <div id="first whitespace">First Paragraph. And Whitespace.</div>    
+    <button id="btnClick">Click!!!</button>
+</body>
+</html>
+
+
+

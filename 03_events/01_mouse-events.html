@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Events</title>
+    <style>
+        #box{
+            width:200px;
+            height:200px;
+            border:2px solid black;
+            background-color:purple;
+        }
+    </style>
+    <!-- Add reference to latest jQuery file -->
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+    <script type="text/javascript">
+       
+       
+       $(document).ready(function(){
+
+            
+            $("#box").click(function() {
+                $(this).css("background-color", "pink");
+            });
+
+            /* 
+            $("#box").dblclick(function() {
+                $(this).css("background-color", "pink");
+            }); */
+
+            /* 
+            $("#box").mouseenter(function() {
+                $(this).css("background-color", "pink");
+            }); */
+
+            /*             
+            $("#box").mouseleave(function() {
+                $(this).css("background-color", "pink");
+            }); */
+
+            /* 
+            {
+                $("#box").mouseenter(function () {
+                   $(this).css("background-color", "pink");
+                });
+
+                $("#box").mouseleave(function () {
+                   $(this).css("background-color", "purple");
+                });
+            } */
+
+            /* 
+            $("#box").hover(function() {
+                $(this).css("background-color", "pink")
+            }); */
+
+            /* 
+            $("#box").hover(function() {
+                $(this).css("background-color", "pink")
+            }, function() {
+                $(this).css("background-color", "purple")
+            }); */
+
+            /* 
+            {
+                $("#box").mousedown(function() {
+                    $(this).css("background-color", "pink");
+                });
+                $("#box").mouseup(function(){
+                    $(this).css("background-color", "green");
+                });
+            } */
+
+            
+        });      
+    </script>
+</head>
+
+<body>
+<form>
+    <div id="box"></div>
+</body>
+</html>
+
+
+

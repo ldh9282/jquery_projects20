@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DOM Manipulation</title>
+    <!-- Add reference to latest jQuery file -->
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+    <script type="text/javascript">
+       $(document).ready(function(){
+            $("#btnClick").click(function(){
+                // property vs attribute
+                // When the value is changed in the User Inteface,
+                // the property is changed, but attribute is not changed.
+
+                console.log("The attribute value is " + $("input:first").attr("value"));
+                console.log("The property value is " + $("input:first").prop("value"));
+                console.log("The property value is " + $("input:first").val());
+
+                /* console.log("The attribute value is " + $("input:first").attr("id"));
+                console.log("The property value is " + $("input:first").prop("id")); */
+
+                // Even if the value is set as an attribute method,
+                // it is not reflected in the UI.
+                // 우선순위 attr (ui에서 변경 반영하지 않음) > val(ui에서 변경 반영) = prop (ui에서 변경 반영)
+                /* $("option:first").attr("value", "Rose");
+                console.log("The attribute value of first option is " + $("option:first").attr("value"));
+                console.log("The value of first option is " + $("option:first").val());
+                console.log("The property value of first option is " + $("option:first").prop("value")); */
+            });
+        });      
+    </script>
+</head>
+
+<body>
+<h3>Personal Details</h3>
+<label for="fname"><b>First Name:</b></label><input type="text" id="fname" value="John"/><br />
+<label for="lname"><b>Last Name:</b></label><input type="text" id="lname" /><br />
+<label for="flower"><b>Your Favorite Flower:</b></label><br />
+<select id="flower" multiple>
+   <option>Rose</option>
+   <option selected>Tulips</option>
+   <option>Jasmine</option>
+</select><br />
+<input type="button" id="btnClick" value="Click" /><br />
+</body>
+</html>
+
+
+

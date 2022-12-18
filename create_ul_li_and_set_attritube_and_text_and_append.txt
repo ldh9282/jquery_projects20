@@ -1,0 +1,22 @@
+// Create the list element
+var list = $("<ul>");
+
+// Set the id attribute of the list
+list.attr("id", "my-list");
+
+// Create the list items
+var item1 = $("<li>").text("Item 1");
+var item2 = $("<li>").text("Item 2");
+var item3 = $("<li>").text("Item 3");
+
+// Add the list items to the list
+list.append(item1, item2, item3);
+
+// Append the list to the body of the page
+$("body").append(list);
+
+<ul id="my-list">
+  <li>Item 1</li>
+  <li>Item 2</li>
+  <li>Item 3</li>
+</ul>

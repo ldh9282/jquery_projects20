@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <title>Document</title>
+
+    <style>
+        #box {
+            height: 250px;
+            width: 350px;
+            border: 2px solid black;
+            margin: 0px auto;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        #result {
+            color: purple;
+            font-size: 25px;
+            text-align: justify;
+            padding: 2px;
+        }
+    </style>
+</head>
+
+<script>
+    
+    $(document).ready(function () {
+        $("#btnCalculate").click(function() {
+            var height = $("#height").val();
+            var weight = $("#weight").val();
+
+            if (height%1 >=0 && weight%1 >=0) {
+                // request를 통해 서버에 보낼 sending data가 data
+                // sending하는 data의 타입이 contentType
+                // 서버로부터 응답받을 리턴 데이터가 success function의 첫번째 파라미터
+                // 그 데이터의 타입이 dataType임
+                // 즉 보낼 데이터의 타입이 dataType이 아니라 성공했을때 받을 데이터의 타입이 dataType임
+                // dataType의 디폴트는 text
+                // json으로 받으려면 json으로 명시해야함
+
+                // processData는 데이터를 서버에 보내기전에 전처리 변환과정을 하는것을 얘기하는데 디폴트는 true임
+                // 하지만 이미지같이 복잡한 데이터는 변환과정을 서버에서 직접 하는게 효율적이라 전처리변환과정을 false로 설정합니다
+                // processData를 false 한다는 것은 에이잭스에서 보낸 데이터를 이해하는 것을 서버에 맡긴다는 것입니다.
+                
+                //$.ajax() function will use a default content type of application/x-www-form-urlencoded; charset=UTF-8 for the request.
+
+                //This default content type is suitable for most cases where you are sending simple data, such as text or numbers, in the request.
+                // contentType 디폴트값으로 보내고 싶으면
+                // javascript object을 $.param() 메서드로 url-encoded string을 만들어야함
+
+
+                // plain text, number, url-encoded string은 디폴트 contentType으로 보내고
+                // json.stringify한 json data는 contentType을 application/json으로 보내야함
+                var data = {
+                    key1: 'value1',
+                    key2: 'value2'
+                };
+
+                var encodedData = $.param(data);
+
+                $.ajax({
+                    url: 'http://example.com/api/endpoint',
+                    method: 'POST',
+                    data: encodedData,
+                    contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+                    success: function (response) {
+                        // Handle the response here
+                    }
+                })
+                // contentType 디폴트값으로 보내고 싶으면
+                // arr을 $.param() 메서드로 url-encoded string을 만들어야함
+                /* 
+                var data = [
+                    'value1',
+                    'value2'
+                ];
+
+                var encodedData = $.param(data);
+
+                $.ajax({
+                    url: 'http://example.com/api/endpoint',
+                    method: 'POST',
+                    data: encodedData,
+                    contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+                    success: function (response) {
+                        // Handle the response here
+                    }
+                });     */
+
+                $.ajax({
+                    url: "localhost:5500/server_url",
+                    method: "get",
+                    data: {ht: height, wt: weight},
+                    dataType: "json",  
+                    success: function(data, status, jqXHR) {
+                        $("#result").html("Your BMI is " + data.bmi + "." + data.message);
+                    },
+                    error: function(jqXHR, status, data) {
+                        
+                    }
+                })
+
+
+                // call back function 을 사용할 수도 있음
+                /*
+                function handleResponse(response) {
+                    // Do something with the response here
+                }
+                $.ajax({
+                    url: 'http://example.com/api/endpoint',
+                    method: 'GET',
+                    success: handleResponse
+                }); */
+
+                // delete도 가능
+                /* $.ajax({
+                    url: 'http://example.com/api/endpoint',
+                    method: 'DELETE',
+                    data: {
+                        id: 123
+                    },
+                    success: function (response) {
+                        // Handle the response here
+                    }
+                }); */
+
+
+                // 여담으로 ajax shorthand method도 있는데 자동으로 url-encoded 하기 때문에 obj, arr도 contentType 디폴트로 보낼 수 있다
+
+                // 하지만 ajax는 그러지 않아서 디폴트 contentType으로 obj이나 arr를 보내려면 url-encoded string으로 변환을 먼저해야한다. 그러지 않으면 sending 한 data를 이해하는 것은 오로지 서버에서 처리를 하냐에 달려있다.
+
+                
+                // delete, get, post 종류가 있다
+                // select query -> get
+                // delete -> delete
+                // update, insert -> post
+                // Make a DELETE request to the specified URL
+                /* $.ajax({
+                    url: 'http://example.com/api/endpoint',
+                    method: 'DELETE',
+                    data: {
+                        id: 123
+                    },
+                    success: function (response) {
+                        // Handle the response here
+                    }
+                });
+
+                // Make a GET request to the specified URL
+                $.ajax({
+                    url: 'http://example.com/api/endpoint',
+                    method: 'GET',
+                    success: function (response) {
+                        // Handle the response here
+                    }
+                });
+
+                // Make a POST request to the specified URL with the specified data
+                $.ajax({
+                    url: 'http://example.com/api/endpoint',
+                    method: 'POST',
+                    data: {
+                        name: 'John Doe',
+                        age: 35
+                    },
+                    success: function (response) {
+                        // Handle the response here
+                    }
+                }); */
+
+                // 숫자를 보낼 때는 자바에서는 객체로 보내고
+                // ajax에서는 dataType으로 json을 보내야함
+                // On the server side, in Java
+                /* 
+                Map < String, Object > data = new HashMap <> ();
+                data.put("total", 100);
+                data.put("average", 50.5);
+
+                String jsonData = new ObjectMapper().writeValueAsString(data);
+
+                // On the client side, in JavaScript
+                $.ajax({
+                    url: 'http://example.com/api/endpoint',
+                    method: 'POST',
+                    dataType: 'json',
+                    data: jsonData,
+                    success: function (response) {
+                        // Handle the response data here, assuming that it is JSON data
+                        var total = response.total;
+                        var average = response.average;
+                        // Use the data in your code here
+                    }
+                }); */
+
+
+                // url encoded string으로 보냈을 때 자바에서 받는법
+                /* 
+                // import java.net.URLDecoder;
+                // Assume that the urlEncodedString variable contains the URL-encoded string
+                String urlEncodedString = "total=100&average=50.5";
+
+                // Decode the URL-encoded string
+                String decodedString = URLDecoder.decode(urlEncodedString, "UTF-8");
+                // decodedString will be 'total=100&average=50.5'
+
+                // Split the decoded string on the '&' character
+                String[] pairs = decodedString.split("&");
+                // pairs will be ['total=100', 'average=50.5']
+
+                // Loop through the pairs and extract the individual values
+                for (String pair : pairs) {
+                String[] keyValue = pair.split("=");
+                String key = keyValue[0];
+                String value = keyValue[1];
+                // Use the key and value in your code here
+                } */
+
+
+                // json으로 보냈을 때 자바에서 받는 방법
+                /* 
+                import org.json.JSONObject;
+                // Assume that the jsonString variable contains the JSON-formatted string
+                String jsonString = "{'total': 100, 'average': 50.5}";
+
+                // Parse the JSON-formatted string
+                JSONObject jsonObject = new JSONObject(jsonString);
+
+                // Extract the individual values from the JSON object
+                int total = jsonObject.getInt("total");
+                double average = jsonObject.getDouble("average");
+
+                // Use the total and average values in your code here */
+
+                // ajax에서 obj을 json으로 보내는법
+                /* 
+                var data = {
+                    total: 100,
+                    average: 50.5
+                };
+
+                var jsonData = JSON.stringify(data);
+
+                $.ajax({
+                    url: 'http://example.com/api/endpoint',
+                    method: 'POST',
+                    contentType: 'application/json',
+                    dataType: 'json',
+                    data: jsonData,
+                    success: function (response) {
+                        // Handle the response data here, assuming that it is JSON data
+                        var total = response.total;
+                        var average = response.average;
+                        // Use the data in your code here
+                    }
+                }); */
+
+
+
+                //can i receieve javascript object as non json by object properties name as parmeter in java?
+                //Yes, you can receive data from a JavaScript object in a Java method by using the names of the object's properties as method parameters.
+
+                //Java method:
+                /* 
+                @RequestMapping(value = "/receiveData", method = RequestMethod.POST)
+                public @ResponseBody String receiveData(
+                    @RequestParam("property1") String property1,
+                    @RequestParam("property2") String property2) {
+
+                // do something with the data from the JavaScript object
+                return "Success!";
+                } */
+
+                //JavaScript code:
+                /* 
+                var myObject = {
+                "property1": "value1",
+                "property2": "value2"
+                };
+
+                $.ajax({
+                url: "/receiveData",
+                type: "POST",
+                data: myObject,
+                success: function(response) {
+                    console.log(response);
+                }
+                }); */
+            }
+        });
+        
+    })
+
+</script>
+
+<body>
+
+    <div id="box">
+
+        <h2>BMI Calculator</h2>
+        <table>
+            <tr>
+                <td>Height:</td>
+                <td><input type="text" id="height"></td>
+                <td>(heights in centimeters)</td>
+            </tr>
+            <tr>
+                <td>Weight:</td>
+                <td><input type="text" id="weight"></td>
+                <td>(weight in killograms</td>
+            </tr>
+
+        </table>
+        <br>
+        <center><button id="btnCalculate">Calculate BMI</button></center>
+
+        <div id="result"></div>
+    </div>
+
+
+
+</body>
+
+</html>

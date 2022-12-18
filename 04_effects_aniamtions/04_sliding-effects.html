@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Practice jQuery</title>
+    <style>
+        div
+        {
+            width:150px;
+            height:150px;
+            border:2px solid black;
+            margin:10px;
+            padding:10px;
+        }
+    </style>
+    <!-- Add reference to latest jQuery file -->
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+    <script type="text/javascript">
+       $(document).ready(function(){
+            $("button").click(function(){
+                //$("div").slideDown(5000);
+                //$("div").slideUp(5000);
+                $("div").slideToggle(5000);
+            });
+        });      
+    </script>
+</head>
+
+<body>
+    <div style="background-color:purple;"></div>
+    <div hidden style="background-color:green;"></div><br />
+    <button id="btnClick">Click</button>
+</body>
+</html>
+
+
+
