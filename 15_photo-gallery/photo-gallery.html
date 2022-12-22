@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+        <style>
+            @import url('https://css.gg/arrow-right-r.css');
+
+            #gallery {
+                width: 450px;
+                margin: 25px auto;
+                position: relative;
+            }
+
+            #upper {
+                height: 450px;
+                margin-bottom: 10px;
+            }
+            #upper img {
+                width: 100%;
+                position: absolute;
+            }
+            .thumb img {
+                width: 150px;
+                height: 120px;
+            }
+            #lower {
+                overflow: hidden;
+            }
+
+            .arrow {
+                position: absolute;
+                bottom: 60px;
+            }
+            #left {
+                left: -60px;
+                transform: rotate(180deg);
+            }
+            #right {
+                right: -60px;
+            }
+
+            #thumbs {
+                white-space: nowrap;
+            }
+
+            #thumbs img {
+                opacity: .4;   
+            }
+            #thumbs img:hover{
+                opacity: 1;
+            }
+            #thumbs a {
+                display: inline-block;
+            }
+            .arrow.disabled {
+                display: none;
+            }
+        </style>
+</head>
+<body>
+
+    
+    <div id="gallery">
+        <div id="upper"></div>
+        <div id="lower">
+            <a href="#" class="arrow" id="left">
+                <i class="gg-arrow-right-r"></i>
+            </a>
+            <div id="thumbs"></div>
+            
+            <a href="#" class="arrow" id="right">
+                <i class="gg-arrow-right-r"></i>
+            </a>
+        </div>
+
+        
+        
+    </div>
+    <script>
+        var imagesArray = [
+                "https://picsum.photos/200",
+                "https://picsum.photos/201",
+                "https://picsum.photos/202",
+                "https://picsum.photos/203",
+                "https://picsum.photos/204",
+                "https://picsum.photos/205",
+                "https://picsum.photos/206",
+
+            ];
+        
+        function putImages() {
+
+            $.each(imagesArray, function(i, item) {
+                $("#upper").append(`<img id="img${i}" src="${item}" >`)
+                $("#thumbs").append(`<a href="#" class="thumb" id="img${i}"><img src="${item}"></a>`)
+            });
+        }
+        function changeImageWithThumb() {
+
+            $(".thumb").on("click", function() {
+                var thumbId = $(this).attr("id");
+                // var images = $("#upper").find("img");
+                var images = $("#upper img");
+                $.each(images, function(i, item) {
+                    if (thumbId == $(item).attr("id")) {
+                        $(item).css("z-index", "1");
+                    } else {
+                        $(item).css("z-index", "-1");
+                    }
+                })
+            });
+        }
+        function clickArrowAndChangeImage() {
+            let count = 0;
+            updateArrows();
+            $(".arrow").on("click", function() {
+                
+                var arrowId = $(this).attr("id");
+                var thumbWidth = $(".thumb").css("width");
+                thumbWidth = thumbWidth.slice(0, thumbWidth.length-2) // remove px string
+                if (arrowId == "left") {
+                    $("#thumbs").animate({marginLeft: `+=${thumbWidth}px`}, "fast");
+                    count--;
+                  
+                  
+                } else {
+                    $("#thumbs").animate({marginLeft: `-=${thumbWidth}px`}, "fast");
+                    count++;
+                
+                }
+
+                updateArrows();
+            });
+
+            
+            
+            function updateArrows() {
+                var totalmages = imagesArray.length;
+                var galleryWidth = $("#gallery").css("width")
+                galleryWidth = galleryWidth.slice(0, galleryWidth-2);
+                
+                if  (count == 0) {
+                    $("#left").addClass("disabled");
+                } else {
+                    $("#left").removeClass("disabled");
+                }
+
+                if (count == totalmages) {
+                    $("#right").addClass("disabled");
+                } else {
+                    $("#right").removeClass("disabled");
+                }
+            }
+        }
+
+        
+        $(document).ready(function() {
+            putImages();
+            changeImageWithThumb();
+            clickArrowAndChangeImage();
+            
+        });                          
+    </script>
+
+
+</body>
+</html>
