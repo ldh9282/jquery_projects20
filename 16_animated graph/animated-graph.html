@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <style>
+        #main {
+            margin: 25px auto;
+            width: 800px;
+        }
+        #left, #right {
+            width: 50%;
+            float: left;
+            margin-top: 60px;
+        }
+        #left {
+            text-align: center;
+        }
+        table {
+            border: 2px solid black;
+            margin: 20px auto;
+            width: 75%;
+        }
+        th {
+            border: 1px solid black;
+        }
+        td {
+            border: 1px solid black;
+            text-align: center;
+            padding: 6px;
+        }
+        #graph {
+            border-left: 2px solid black;
+            border-bottom: 2px solid black;
+            height: 300px;
+            position: relative;
+        }
+        .row {
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background-color: black;
+        }
+        .content {
+            margin: -8px 0 0 -35px;
+        }
+        .column {
+            position: absolute;
+            bottom: 0;
+            width: 15%;
+            margin-left: 20px;
+        }
+        .column div {
+            text-align: center;
+            margin-top: -20px;
+        }
+        button {
+            border-radius: 5px;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="main">
+        <div id="left">
+            <table>
+                <thead>
+                    <th colspan="3">Data Table</th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Class 1</td>
+                        <td></td>
+                        <td style="background-color: gray;"></td>
+                    </tr>
+                    <tr>
+                        <td>Class 2</td>
+                        <td></td>
+                        <td style="background-color: blue;"></td>
+                    </tr>
+                    <tr>
+                        <td>Class 3</td>
+                        <td></td>
+                        <td style="background-color: purple;"></td>
+                    </tr>
+                    <tr>
+                        <td>Class 4</td>
+                        <td></td> 
+                        <td style="background-color: pink;"></td>
+                    </tr>
+                </tbody>
+            </table>
+            <button type="button" id="btnDisplay" onclick="displayGraph()">Display</button>
+        </div>
+        <div id="right">
+            <div id="graph">
+                <div class="row" style="bottom: 25%;">
+                    <div class="content">25%</div>
+                </div>
+                <div class="row" style="bottom: 50%;">
+                    <div class="content">50%</div>
+                </div>
+                <div class="row" style="bottom: 75%;">
+                    <div class="content">75%</div>
+                </div>
+                <div class="column" id="column0" style="left: 0; background-color: gray;">
+
+                </div>
+                <div class="column" id="column1" style="left: 25%; background-color: blue;">
+
+                </div>
+                <div class="column" id="column2" style="left: 50%; background-color: purple;">
+
+                </div>
+                <div class="column" id="column3" style="left: 75%; background-color: pink;">
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        function displayGraph() {
+            $('#main tbody tr').each(function(index) {
+                $('.column').css('height', '0')
+                var cell = $(this).children('td:eq(1)').text();
+                $('#column' + index).animate({height: cell}, 1500).html("<div>" + cell + "</div>")
+            });
+        }
+
+        $(document).ready(function() {
+            var arr = [54, 35, 80, 70];
+            var cells = $('tr td');
+            for (let index = 1, arrIndex = 0; index < cells.length; index = index + 3) {
+                cells[index].textContent = arr[arrIndex++] + '%';
+            }
+
+            displayGraph()
+        })
+    </script>
+</body>
+</html>
