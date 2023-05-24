@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+
+    <style>
+        #container {
+            width: 80%;
+            margin: 0px auto;
+        }
+        p {
+            font-size: 20px;
+            text-align: justify;
+            line-height: 2;
+            padding: 5px;
+        }
+        a, a:visited {
+            text-decoration: none;
+            font-size: 25px;
+            color: purple;
+            position: relative;
+            display: inline;
+        }
+        .tooltip {
+            width: 100px;
+            height: 40px;
+            background-color: purple;
+            color: white;
+            font-size: 18px;
+            text-align: center;
+            border-radius: 20px;
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            margin-left: -50px;
+        }
+        .tooltip::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            border-width: 10px;
+            margin-left: -10px;
+            border-style: solid;
+            border-color: purple transparent transparent transparent;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="container">
+        <div>
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum id voluptatem laudantium placeat alias
+                obcaecati illo a, <a href="#" title="title1">magni</a> ex mo llitia soluta sunt similique omnis dicta vel magnam distinctio quasi
+                voluptatibus.
+            </p>
+            <p>
+                Dolorum ipsum repellat hic aperiam rerum beatae non neque aliquid eveniet, inventore sequi tempore deserunt
+                illo quos commodi, <a href="#" title="title2">ipsam</a>voluptatibus  repellendus perferendis possimus nobis soluta laboriosam est. Omnis,
+                iste aspernatur!
+            </p>
+            <p>
+                Libero quisquam exercitationem fuga neque, quo obcaecati, velit nostrum voluptatibus doloribus esse quidem
+                ipsam minus sed. <a href="#" title="title3">Blanditiis</a>, natus eligendi consequatur doloribus laudantium, sit harum vel modi deleniti
+                ipsam placeat odit.
+            </p>
+            <p>
+                Magni nemo incidunt, consequatur exercitationem, beatae expedita sit non voluptas enim quae harum illum est
+                officiis officia <a href="#" title="title4">repellendus eveniet placeat</a>? Totam ipsa quidem repellendus quis autem corrupti, aut
+                voluptatum corporis?
+            </p>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            $('a').append('<span class="tooltip" style="display: none;"></span>');
+            $('a').hover(function() {
+                $(this).find('span').fadeIn(500);
+                var capital = $(this).attr('title');
+                $(this).find('span').text(capital);
+            }, function() {
+                $(this).find('span').fadeOut(200);
+            })
+        });
+    </script>
+</body>
+
+</html>
